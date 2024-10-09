@@ -1,17 +1,13 @@
 void main() {
-  var person = {
-    'name': 'Дмитро',
-    'age': '15',
-    'hobby': 'Футбол, музика, шахмати'
+  Map<String, dynamic> person = {
+    'name': 'Іван',
+    'age': 25,
+    'hobby': 'гра на гітарі'
   };
-  displayKeys(person);
-  displayName(person);
+
+  person.forEach((key, value) {
+    print('$key');
+  });
+
+  print(person['name']);
 }
-void displayKeys(Map<String, dynamic> data) {
-  for (var key in data.keys) {
-    print(key);
-  }
-}
-void displayName(Map<String, dynamic> data) {
-  print(data['name']);
-} 
