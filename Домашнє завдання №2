@@ -1,0 +1,22 @@
+bool isSimple(int value) {
+  if (value < 2) {
+    return false;
+  }
+  for (var i = 2; i * i <= value; i++) {
+    if (value % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+void findPrimes(var numbers) {
+  for (var number in numbers) {
+    if (isSimple(number)) {
+      print(number.toString());
+    }
+  }
+}
+void main() {
+  var numbers = [4, 5, 7, 9, 12, 53, 45, 22, 43, 76,97];
+  findPrimes(numbers);
+}
