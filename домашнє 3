@@ -1,0 +1,52 @@
+import 'dart:io';
+
+void main() {
+  List<String> storyOptions = [
+    'Ви знаходите меч і можете взяти його.',
+    'Перед вами загадкові двері, ви можете їх відкрити.',
+    'Ви бачите старий ліхтар, він може стати у нагоді в темряві.',
+  ];
+  List<String> selectedActions = [];
+
+  print("Вас вітає текстова гра 'Пригоди у темному лісі'!");
+  print("Ви прокидаєтесь у темному лісі, і перед вами є кілька варіантів дій.");
+
+  for (int i = 0; i < storyOptions.length; i++) {
+    print('${i + 1}: ${storyOptions[i]}');
+  }
+
+  while (true) {
+    stdout.write("\nВведіть номер дії для вибору або 'q' для виходу з гри: ");
+    final choice = stdin.readLineSync();
+
+    if (choice == "q") {
+      print("\nВи вирішили завершити свої пригоди. До зустрічі!");
+      break;
+    }
+
+    if (choice == "1" && !selectedActions.contains(storyOptions[0])) {
+      selectedActions.add(storyOptions[0]);
+      print("\nВи взяли меч. Тепер ви готові до бою!");
+    } else if (choice == "2" && !selectedActions.contains(storyOptions[1])) {
+      selectedActions.add(storyOptions[1]);
+      print("\nВи відкрили двері і зайшли в темне приміщення. Щось шурхотить у темряві...");
+    } else if (choice == "3" && !selectedActions.contains(storyOptions[2])) {
+      selectedActions.add(storyOptions[2]);
+      print("\nВи взяли ліхтар. Тепер ви можете бачити в темряві!");
+    } else {
+      print("Неправильний вибір або дія вже виконана. Спробуйте ще раз.");
+      continue;
+    }
+
+    print("\nВаші дії:");
+    for (var action in selectedActions) {
+      print("- $action");
+    }
+
+    if (selectedActions.length > 2) {
+      print("\nВи зібрали достатньо речей для подорожі і готові вирушити далі.");
+      print("Дякуємо за гру! Ви успішно подолали першу частину пригод.");
+      break;
+    }
+  }
+}
